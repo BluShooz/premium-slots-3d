@@ -16,6 +16,8 @@ interface GameState {
     addCredits: (amount: number) => void;
     resetStatus: () => void;
     setWin: (amount: number) => void;
+    setResults: (results: number[][]) => void;
+    setStatus: (status: GameStatus) => void;
 }
 
 export const useGameStore = create<GameState>((set) => ({
@@ -32,7 +34,7 @@ export const useGameStore = create<GameState>((set) => ({
     lastWin: 0,
 
     spin: () => set((state) => {
-        if (state.credits < state.bet) return { status: 'idle' };
+        if (state.credits < state.bet || state.status !== 'idle') return state;
         return {
             status: 'spinning',
             credits: state.credits - state.bet,
@@ -56,4 +58,8 @@ export const useGameStore = create<GameState>((set) => ({
         credits: state.credits + amount,
         lastWin: amount
     })),
+
+    setResults: (results) => set({ results }),
+
+    setStatus: (status) => set({ status }),
 }));

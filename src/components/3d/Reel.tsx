@@ -6,6 +6,7 @@ import { ReelBlurMaterial } from '../../shaders/ReelBlurMaterial';
 import { useGameStore } from '../../store/useGameStore';
 import type { GameStatus } from '../../store/useGameStore';
 import { SYMBOLS_COUNT } from '../../logic/SlotLogic';
+import symbolsUrl from '../../assets/symbols.png';
 
 interface ReelProps {
     index: number;
@@ -24,7 +25,7 @@ export const Reel: React.FC<ReelProps> = ({ index, position }) => {
     const targetOffset = useRef(0);
     const isStopping = useRef(false);
 
-    const texture = useTexture('/src/assets/symbols.png');
+    const texture = useTexture(symbolsUrl);
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
 

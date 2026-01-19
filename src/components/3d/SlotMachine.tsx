@@ -1,52 +1,60 @@
 import React, { useEffect } from 'react';
-import { Reel } from './Reel';
 import { Cabinet } from './Cabinet';
+import { Reel } from './Reel';
+import { Lever } from './Lever';
 import { useGameStore } from '../../store/useGameStore';
 import { generateResult, calculateWin } from '../../logic/SlotLogic';
 
 export const SlotMachine: React.FC = () => {
-    const { status, stop, setWin, bet, results } = useGameStore();
+    const status = useGameStore(state => state.status);
+    const setResults = useGameStore(state => state.setResults);
+    const setStatus = useGameStore(state => state.setStatus);
+    const setWin = useGameStore(state => state.setWin);
+    const bet = useGameStore(state => state.bet);
 
     useEffect(() => {
         if (status === 'spinning') {
-            // Logic for stopping reels sequentially
             const timer = setTimeout(() => {
                 const newResults = generateResult();
-                stop(newResults);
-            }, 2000); // Spin for 2 seconds
-
+                setResults(newResults);
+                setStatus('stopping');
+            }, 2000);
             return () => clearTimeout(timer);
         }
 
         if (status === 'stopping') {
-            // After stopping, check for win
             const timer = setTimeout(() => {
-                const win = calculateWin(results, bet);
-                if (win > 0) {
-                    setWin(win);
+                const results = useGameStore.getState().results;
+                const winAmount = calculateWin(results, bet);
+                if (winAmount > 0) {
+                    setWin(winAmount);
+                    setStatus('won');
                 } else {
-                    useGameStore.getState().resetStatus();
+                    setStatus('idle');
                 }
-            }, 1500); // Wait for reels to visually stop
-
+            }, 3000); // Wait for reels to stop
             return () => clearTimeout(timer);
         }
-    }, [status]);
+    }, [status, setResults, setStatus, setWin, bet]);
 
     return (
         <group>
-            <Cabinet />
-
-            {/* 5 Reels spaced apart */}
+            {/* Reels in a container */}
             <group position={[0, 0, 0.5]}>
                 {[...Array(5)].map((_, i) => (
                     <Reel
                         key={i}
                         index={i}
-                        position={[(i - 2) * 2.2, 0, 0]}
+                        position={[(i - 2) * 2.1, 0, 0]}
                     />
                 ))}
             </group>
+
+            {/* Decorative Cabinet */}
+            <Cabinet />
+
+            {/* Interactive Lever */}
+            <Lever />
         </group>
     );
 };

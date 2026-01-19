@@ -5,7 +5,7 @@ A high-fidelity, fully playable 3D Slot Machine game built with **React**, **Thr
 ![Slot Machine Demo](https://raw.githubusercontent.com/master/premium-slots-3d/main/src/assets/symbols.png)
 
 ## 🚀 Live Demo
-**[Play the Game Here](https://premium-slots-3d-odb9xkdma-jon-smiths-projects-a3dfc292.vercel.app)**
+**[Play the Game Here](https://premium-slots-3d.vercel.app)**
 
 ## ✨ Key Features
 - **💎 Premium 3D Visuals**: Custom-modeled cabinet with metallic materials and dynamic LED lighting.

@@ -32,7 +32,7 @@ export const SlotMachine: React.FC = () => {
                 } else {
                     setStatus('idle');
                 }
-            }, 3000); // Wait for reels to stop
+            }, 5000); // 5s total for staggered Vegas stop
             return () => clearTimeout(timer);
         }
     }, [status, setResults, setStatus, setWin, bet]);

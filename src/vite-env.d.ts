@@ -1,21 +1,23 @@
 /// <reference types="vite/client" />
+import * as THREE from 'three'
+import { ThreeElements } from '@react-three/fiber'
 
-interface ReelBlurMaterialProps {
-    uTime?: number;
-    uMap?: THREE.Texture | null;
-    uBlurAmount?: number;
-    uOffset?: number;
-    uColor?: THREE.Color;
-    transparent?: boolean;
-    side?: THREE.Side;
+declare module '@react-three/fiber' {
+    interface ThreeElements {
+        reelBlurMaterial: ThreeElements['meshStandardMaterial'] & {
+            uTime?: number;
+            uMap?: THREE.Texture | null;
+            uBlurAmount?: number;
+            uOffset?: number;
+            uColor?: THREE.Color;
+        }
+    }
 }
 
 declare global {
     namespace JSX {
         interface IntrinsicElements {
-            reelBlurMaterial: any; // Simplified for now
+            reelBlurMaterial: any;
         }
     }
 }
-
-export { };

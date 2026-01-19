@@ -1,73 +1,60 @@
-# React + TypeScript + Vite
+# 🎰 Premium 3D Slot Machine
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-fidelity, fully playable 3D Slot Machine game built with **React**, **Three.js**, and **React Three Fiber**. Experience the thrill of a real casino with professional graphics, smooth physics-based animations, and custom shaders.
 
-Currently, two official plugins are available:
+![Slot Machine Demo](https://raw.githubusercontent.com/master/premium-slots-3d/main/src/assets/symbols.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
+**[Play the Game Here](https://premium-slots-3d-odb9xkdma-jon-smiths-projects-a3dfc292.vercel.app)**
 
-## React Compiler
+## ✨ Key Features
+- **💎 Premium 3D Visuals**: Custom-modeled cabinet with metallic materials and dynamic LED lighting.
+- **🎬 Cinematic Animations**: Physics-based acceleration/deceleration curves and custom **Motion Blur** shaders for realistic reel spins.
+- **🔢 Weighted RNG**: Realistic casino-grade math logic with 9 distinct symbol types and multi-tier payouts.
+- **🔊 Layered Audio**: Synthesized sound design for spins, stops, and wins using the Web Audio API.
+- **📱 Cross-Platform**: Fully responsive design that works on desktop and mobile browsers.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠 Tech Stack
+- **Framework**: [React 18](https://reactjs.org/)
+- **3D Graphics**: [Three.js](https://threejs.org/) & [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/)
+- **Helper Libraries**: [@react-three/drei](https://github.com/pmndrs/drei), [@react-three/postprocessing](https://github.com/pmndrs/postprocessing)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
 
-## Expanding the ESLint configuration
+## 🏗 Installation & Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/BluShooz/premium-slots-3d.git
+   cd premium-slots-3d
+   ```
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+3. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+4. **Build for production**:
+   ```bash
+   npm run build
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📜 Game Rules & Paytable
+- **Symbols**: 9 unique symbols including Gold 7s, Cherries, Diamonds, and the "JACKPOT" logo.
+- **Win Conditions**: Match 3 or more symbols in the middle payline.
+- **Multipliers**: 
+  - 3-of-a-kind: 1x
+  - 4-of-a-kind: 3x
+  - 5-of-a-kind: 10x
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 👨‍💻 Author
+Built with ❤️ by **Dark Passenger** & **Blue Phantom X**.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+*Disclaimer: This is a simulation game and does not involve real money gambling.*

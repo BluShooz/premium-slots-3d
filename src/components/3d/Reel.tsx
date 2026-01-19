@@ -28,13 +28,6 @@ export const Reel: React.FC<ReelProps> = ({ index, position }) => {
     texture.wrapS = THREE.RepeatWrapping;
     texture.wrapT = THREE.RepeatWrapping;
 
-    // Symbols are in a 3x3 grid (9 symbols total)
-    // We need to adjust the shader to pick symbols correctly.
-    // For simplicity, we'll keep the shader as is but the texture itself will be multi-symbol.
-    // Actually, let's update the shader to handle the grid if needed, 
-    // but for a reel, we usually want them in a vertical strip.
-    // I will assume symbols are mapped vertically.
-
     useFrame((_state, delta) => {
         if (status === 'spinning') {
             const newSpeed = Math.min(speed + delta * 5, 10);
